@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  app:
+    build: .
+    command: npm start
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/usr/app
+    networks:
+      nginx_mynetwork:
+        ipv4_address: 171.1.0.20
+
+networks:
+  nginx_mynetwork:
+    external: true
+#  docker network create --driver=bridge --subnet=171.1.0.0/16 customnet

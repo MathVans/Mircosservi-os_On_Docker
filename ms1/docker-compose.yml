@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  app:
+    environment:
+      - MS2_URL=http://171.1.0.20:3001/ms2
+      - PORT=3000
+    build: .
+    command: npm start
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/app
+    networks:
+      nginx_mynetwork:
+        ipv4_address: 171.1.0.10
+
+networks:
+  nginx_mynetwork:
+    external: true
+#  docker network create --driver=bridge --subnet=171.1.0.0/16 customnet

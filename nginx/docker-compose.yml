@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      nginx_mynetwork:
+        ipv4_address: 171.1.0.5
+
+networks:
+  nginx_mynetwork:
+    external: true
+    name: nginx_mynetwork
+    #  docker network create --driver=bridge --subnet=171.1.0.0/16 customnet
